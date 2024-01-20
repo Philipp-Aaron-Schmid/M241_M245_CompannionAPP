@@ -1,0 +1,54 @@
+# Project Staging
+Dockerfile
+docker-compose.xml
+init.sql
+
+# Java - Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+application.propperties
+
+# IDE - General
+.classpath
+.project
+.settings/
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Logs and Temp Files
+*.log
+*.tmp
+*.temp
+
+# JavaScript - Node.js
+node_modules/
+.npm
+.npmrc
+
+# JavaScript - Vite
+dist/
+.vite/
+*.local
+*.log
+
+# Environment Files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE - VSCode
+.vscode/
+
+# System Files
+.DS_Store
+Thumbs.db
