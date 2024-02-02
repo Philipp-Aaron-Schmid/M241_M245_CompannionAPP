@@ -36,10 +36,14 @@ a{
   white-space: nowrap;
 }
 
+a:hover{
+  color:#ff2b56;
+}
+
 /* Einstellungen für Logo */
 .logo {
   margin-top: 25px;
-  margin-left: 50px;
+  margin-left: 75px;
   height: 150px;
   width: 300px;
 }
@@ -67,13 +71,12 @@ outline: none;
 
 .forgotPassword {
   margin-top: 30px;
-  text-align: right;
 }
 
 /* Einstellungen für Schaltflächen */
 .navButton {
-  margin-top: 500px;
-  margin-left: 300px;
+  margin-top: 300px;
+  margin-left: 100px;
   align-items: center;
   justify-content: center;
   grid-area: navButton;

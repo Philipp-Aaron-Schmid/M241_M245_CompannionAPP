@@ -62,8 +62,8 @@ export default function Login() {
                         </div>
                         <button className="buttonText" type="submit">Login</button>
                     </form>
-
                 </div>
+                
             </section>
         </div>
     );
