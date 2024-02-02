@@ -5,18 +5,15 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
 // Importiere Navigation (Seiten, Komponenten)
 import Login from "./pages/login";
-import Private from "./pages/private";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter([ 
+  
   {
     path: "/",
+
     element: <Login />
-  },
-  {
-    path: "/private",
-    loader: private_loader,
-    element: <Private />
-  },
+  }
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

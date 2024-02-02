@@ -1,7 +1,13 @@
+// Importiert React und die benötigten Ressourcen
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../functions/authService";
 
+// Importiere Designs (Logo, Gestaltung)
+import Logo from '../assets/img/logo.png';
+import '../css/App.css';
+
+// Komponente für das Login-Formular
 export default function Login() {
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
@@ -23,28 +29,42 @@ export default function Login() {
     const onChangePassword = (e) => { setPassword(e.target.value); };
 
     return (
-        <form onSubmit={handleSubmit} method="post">
-            <label>
-                Mail:
-                <input
-                    value={mail}
-                    onChange={onChangeMail}
-                    name="mail"
-                    type="text"
-                />
-            </label>
-            <br />
-            <label>
-                Password:
-                <input
-                    value={password}
-                    onChange={onChangePassword}
-                    name="password"
-                    type="password"
-                />
-            </label>
-            <br />
-            <button type="submit">Login</button>
-        </form>
-    )
+        <div className="App">
+            <section>
+
+                <header className="App-header">
+                    <img src={Logo} className="logo" alt="logo" />
+                </header>
+
+                <div className="navButton">
+                    <form onSubmit={handleSubmit} method="post">
+                        <fieldset>
+                            <legend>Email-Adresse</legend>
+                            <input
+                                value={mail}
+                                onChange={onChangeMail}
+                                name="mail"
+                                type="text"
+                            />
+                        </fieldset>
+                        <br />
+                        <fieldset>
+                            <legend>Passwort</legend>
+                            <input
+                                value={password}
+                                onChange={onChangePassword}
+                                name="password"
+                                type="password"
+                            />
+                        </fieldset>
+                        <div class="forgotPassword">
+                            <a href="/forgotPassword">Passwort vergessen?</a>
+                        </div>
+                        <button className="buttonText" type="submit">Login</button>
+                    </form>
+
+                </div>
+            </section>
+        </div>
+    );
 }
