@@ -1,18 +1,32 @@
-import { useLoaderData } from "react-router-dom";
-import { getPrivateContent } from "../functions/getContent";
+import React from 'react';
+import { Link } from "react-router-dom";
 
-export async function loader() {
-  const data = await getPrivateContent();
-  return { data };
-}
+// Importiere Designs (Logo, Gestaltung)
+import Logo from '../assets/img/logo.png';
+import '../css/App.css';
 
-export default function Private() {
-  const { data } = useLoaderData();
+const Private = () => {
 
   return (
-    <>
-      <h1>Privat!</h1>
-      <p>Hier sind die Serverdaten: {data}</p>
-    </>
+    <div>
+
+      <header className="App-header">
+        <img src={Logo} className="logo" alt="logo" />
+      </header>
+      
+      <nav>
+        <ul>
+          <li>
+            <Link to="/profile">Profil</Link>
+          </li>
+          <li>
+            <Link to="/tasks">Tasks</Link>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
   );
 }
+
+  export default Private;
