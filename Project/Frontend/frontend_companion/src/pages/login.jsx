@@ -1,11 +1,15 @@
 // Importiert React und die benötigten Ressourcen
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import AuthService from "../functions/authService";
 
 // Importiere Designs (Logo, Gestaltung)
 import Logo from '../assets/img/logo.png';
+import Image from '../assets/img/login.png';
 import '../css/App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 // Komponente für das Login-Formular
 export default function Login() {
@@ -63,7 +67,26 @@ export default function Login() {
                         <button className="buttonText" type="submit">Login</button>
                     </form>
                 </div>
-                
+
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="/datenschutz" className="link">Datenschutzerklärung</Link>
+                        </li>
+                        <li>
+                            <Link to="/agb" className="link">Allgemeine Geschäftsbedingungen</Link>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <img src={Image} alt="Login" className="imageLogin" />
+                </div>
+
+                <Link to="/hilfe" className="helpLink">
+                    <FontAwesomeIcon className="icon" icon={faQuestionCircle}/> Hilfe & Support
+                </Link>
+
             </section>
         </div>
     );
