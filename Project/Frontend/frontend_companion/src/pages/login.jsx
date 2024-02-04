@@ -76,6 +76,9 @@ export default function Login() {
                         <li>
                             <Link to="/agb" className="link">Allgemeine Geschäftsbedingungen</Link>
                         </li>
+                        <li>
+                            <Link to="/impressum" className="link">Impressum</Link>
+                        </li>
                     </ul>
                 </div>
 
