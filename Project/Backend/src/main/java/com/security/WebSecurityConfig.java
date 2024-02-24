@@ -23,8 +23,8 @@ public class WebSecurityConfig {
     private UserDetailsServiceImpl userDetailsService;
     @Autowired
     private AuthenticationEntryPoint unauthorizedHandler;
-    private final static String[] EVERYONE = { "/api/auth/**", "/index/**"}; //Defines public endpoints
-    private final static String[] SECURE = { "/manage/**" }; //defines highly secure endpoints
+    private final static String[] EVERYONE = { "/api/auth/**", "/api/index/**"}; //Defines public endpoints
+    private final static String[] SECURE = { "/api/manage/**" }; //defines highly secure endpoints
     private final static String[] ROLES = { "ADMIN" }; //defines who can acess the secure ones
 
     @Bean

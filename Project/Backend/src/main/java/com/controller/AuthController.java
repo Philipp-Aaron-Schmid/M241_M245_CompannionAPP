@@ -1,4 +1,4 @@
-package com.security;
+package com.controller;
 
 import java.util.HashSet;
 import java.util.List;
@@ -18,10 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.DTO.JwtResponse;
+import com.DTO.LoginRequest;
+import com.DTO.MessageResponse;
+import com.DTO.SignupRequest;
 import com.model.ERole;
 import com.model.Role;
 import com.model.User;
 import com.repository.*;
+import com.security.UserDetailsImpl;
 import com.util.*;
 import jakarta.validation.Valid;
 
@@ -62,7 +67,7 @@ public class AuthController {
     @PostMapping("/signup")
     @CrossOrigin(origins = "http://localhost:5174")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if (userRepository.existsByUserfirstname(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
@@ -73,8 +78,8 @@ public class AuthController {
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
-                signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+        User user = new User(signUpRequest.getUserfirstname(),signUpRequest.getUserlastname(),
+                signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()),signUpRequest.getLocation());
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
         if (strRoles == null) {
@@ -98,6 +103,10 @@ public class AuthController {
         }
         user.setRoles(roles);
         userRepository.save(user);
+        String assignedClass = signUpRequest.getAssignedCLass();
+        if (assignedClass != null){
+            
+        }
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
