@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 // Importiere Designs (Logo, Gestaltung)
 import Logo from '../assets/img/logo.png';
 import '../css/App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 const Private = () => {
 
@@ -13,7 +15,7 @@ const Private = () => {
       <header className="App-header">
         <img src={Logo} className="logo" alt="logo" />
       </header>
-      
+
       <nav>
         <ul>
           <li>
@@ -25,8 +27,12 @@ const Private = () => {
         </ul>
       </nav>
 
+      <Link to="/hilfe" className="helpLink">
+        <FontAwesomeIcon className="icon" icon={faQuestionCircle} /> Hilfe & Support
+      </Link>
+
     </div>
   );
 }
 
-  export default Private;
+export default Private;
