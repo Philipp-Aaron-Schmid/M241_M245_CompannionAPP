@@ -17,6 +17,9 @@ import com.model.Task;
 import com.model.User;
 import com.repository.TaskRepository;
 import com.repository.UserRepository;
+import com.repository.UserTaskRepository;
+import com.service.TaskService;
+import com.service.UserService;
 
 import jakarta.validation.Valid;
 
@@ -29,6 +32,10 @@ public class AdminController {
     private UserRepository userRepository;
     @Autowired
     private TaskRepository taskRepository;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private TaskService taskService;
     
     // Method do display all users
     @GetMapping("/users")
@@ -43,8 +50,8 @@ public class AdminController {
         if (users == null || users.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User list is null or empty.");
         }
-        List<User> savedUsers = userRepository.saveAll(users);
-        return ResponseEntity.ok(savedUsers);
+        users.forEach(userService::createUser);
+        return ResponseEntity.ok(users);
     }
 
     // Method to save a single user with null check
@@ -53,8 +60,8 @@ public class AdminController {
         if (user == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User object is null.");
         }
-        User savedUser = userRepository.save(user);
-        return ResponseEntity.ok(savedUser);
+        userService.createUser(user);
+        return ResponseEntity.ok(user);
     }
     // Method to display all tasks
     @GetMapping("/tasks")
@@ -69,8 +76,8 @@ public class AdminController {
         if (task == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Task object is null.");
         }
-        Task savedTask = taskRepository.save(task);
-        return ResponseEntity.ok(savedTask);
+        taskService.createTask(task);
+        return ResponseEntity.ok(task);
     }
 
     // Method to add tasks in batch with validation
@@ -79,8 +86,8 @@ public class AdminController {
         if (tasks.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Task list is empty.");
         }
-        List<Task> savedTasks = taskRepository.saveAll(tasks);
-        return ResponseEntity.ok(savedTasks);
+        tasks.forEach(taskService::createTask);
+        return ResponseEntity.ok(tasks);
     }
 
     @GetMapping("/usertask")

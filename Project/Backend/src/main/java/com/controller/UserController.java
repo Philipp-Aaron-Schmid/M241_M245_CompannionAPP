@@ -3,6 +3,7 @@ package com.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,15 +39,33 @@ public class UserController {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         AssignedClass userClass = user.getAssignedClass();
         int classTimer = userClass.getTimer();
+        long id = userTaskRepository.getByUser(userRepository.findById(userId));
 
         List<TaskResponse> tasks = user.getUserTasks().stream()
                 .map(UserTask::getTask)
                 .filter(task -> classTimer >= task.getStart())
                 .map(task -> new TaskResponse(task, // Assuming TaskResponse constructor accepts Task and status
-                        user.getUserTasks().stream().anyMatch(ut -> ut.getTask().equals(task) && ut.isStatus())))
+                        id, user.getUserTasks().stream().anyMatch(ut -> ut.getTask().equals(task) && ut.isStatus())))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(tasks);
     }
+        
+    @PostMapping("/toggle/{userTaskId}")
+    public ResponseEntity<?> toggleUserTaskStatus(@PathVariable Long userTaskId) {
+        @SuppressWarnings("null")
+        UserTask userTask = userTaskRepository.findById(userTaskId)
+                .orElseThrow(() -> new RuntimeException("UserTask not found"));
+
+        // Toggle the status
+        userTask.setStatus(!userTask.isStatus());
+
+        // Save the updated UserTask
+        userTaskRepository.save(userTask);
+
+        return ResponseEntity.ok().build();
+    }
+
+
     
 }
