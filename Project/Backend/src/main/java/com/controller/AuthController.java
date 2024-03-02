@@ -30,7 +30,7 @@ import com.security.UserDetailsImpl;
 import com.util.*;
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:5174", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -45,8 +45,8 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 // this si a cotroller class that hanles signups ans sign ins generatin jwt tokens and encoding passwords among other 
-    @PostMapping("/signin")
-    @CrossOrigin(origins = "http://localhost:5174")
+    @PostMapping("/login")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),

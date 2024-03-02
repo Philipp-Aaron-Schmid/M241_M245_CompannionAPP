@@ -24,8 +24,17 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String description;
+    private int start;
+    private int end;
+    private long dependantId;
+    private String category;
+    private String tool;
+    private boolean visible;
+    private boolean colaboration;
 
-    // Other fields
+    
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserTask> users = new ArrayList<>();

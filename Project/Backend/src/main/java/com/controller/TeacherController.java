@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/index")
+@RequestMapping("/api/Teacher")
 @CrossOrigin(origins = "*")
-public class IndexController {
+public class TeacherController {
 
     @GetMapping("/index")
     public ResponseEntity<List<String>> getGreeting() {

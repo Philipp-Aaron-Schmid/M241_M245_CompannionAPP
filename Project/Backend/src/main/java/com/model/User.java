@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,6 +37,8 @@ public class User {
     private String password;
     @NotBlank
     private String location;
+
+    private boolean notification;
     
     //joins
     @ManyToMany(fetch = FetchType.LAZY) // das ist der spannende ORM Teil: automatisches Mapping von M-N Beziehungen :-)
@@ -45,6 +48,9 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
     private AssignedClass assignedClass;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<UserTask> userTasks;
 
 
 }
