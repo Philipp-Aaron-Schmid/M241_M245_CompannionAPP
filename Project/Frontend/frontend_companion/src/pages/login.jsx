@@ -51,7 +51,6 @@ export default function Login() {
                                 type="text"
                             />
                         </fieldset>
-                        <br />
                         <fieldset>
                             <legend>Passwort</legend>
                             <input
@@ -87,7 +86,7 @@ export default function Login() {
                 </div>
 
                 <Link to="/hilfe" className="helpLink">
-                    <FontAwesomeIcon className="icon" icon={faQuestionCircle}/> Hilfe & Support
+                    <FontAwesomeIcon className="iconLink" icon={faQuestionCircle}/>Hilfe & Support
                 </Link>
 
             </section>

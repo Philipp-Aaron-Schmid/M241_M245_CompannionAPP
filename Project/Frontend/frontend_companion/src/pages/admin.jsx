@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from '../assets/img/logo.png';
 import '../css/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle, faBell, faGear } from '@fortawesome/free-solid-svg-icons';
+
 
 const Private = () => {
 
@@ -14,6 +14,10 @@ const Private = () => {
 
     const handleLogoutClick = () => {
         navigate("/");
+    };
+
+    const handleTaskClick = () => {
+        navigate("/tasks");
     };
 
     return (
@@ -25,13 +29,13 @@ const Private = () => {
 
             <section className="navButton">
                 <div>
-                    <button className="button" onClick={handleLogoutClick}>Dashboard</button>
+                    <button className="button">Dashboard</button>
                 </div>
                 <div>
-                    <button className="button" onClick={handleLogoutClick}>Benutzerkonto & Berechtigung</button>
+                    <button className="button">Benutzerkonto & Berechtigung</button>
                 </div>
                 <div>
-                    <button className="button" onClick={handleLogoutClick}>Modulen & Aufgaben</button>
+                    <button className="button" onClick={handleTaskClick}>Modulen & Aufgaben</button>
                 </div>
                 <div>
                     <button className="button" onClick={handleLogoutClick}>Logout</button>
@@ -39,12 +43,16 @@ const Private = () => {
             </section>
 
             <div className="navLinks">
-                <Link to="/benachrichtung" className="messageLink">
-                    <FontAwesomeIcon className="icon" icon={faBell} /> Benachrichtungen
+                <Link to="/message" className="settingLink">
+                    <FontAwesomeIcon className="iconLink" icon={faGear} />Einstellungen
                 </Link>
 
-                <Link to="/hilfe" className="helpLink">
-                    <FontAwesomeIcon className="icon" icon={faQuestionCircle} /> Hilfe & Support
+                <Link to="/message" className="messageLink">
+                    <FontAwesomeIcon className="iconLink" icon={faBell} />Benachrichtungen
+                </Link>
+
+                <Link to="/help" className="helpLink">
+                    <FontAwesomeIcon className="iconLink" icon={faQuestionCircle} />Hilfe & Support
                 </Link>
             </div>
 

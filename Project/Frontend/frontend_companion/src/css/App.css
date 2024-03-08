@@ -8,26 +8,95 @@
   font-weight: 400;
 }
 
-.App {
-  display: grid;
-  grid: "section gameBoard" auto / 40% 60%;
-}
-
 h1 {
-  margin-top: -200px;
   color: #263238;
   font-family: 'Quicksand';
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 700;
 }
 
-table {
-  margin-top: -550px;
-  margin-left: 500px;
+.table {
+  margin-top: -650px;
+  margin-left: 650px;
   border-collapse: collapse;
-  border-radius: 16px;
-  width: 900px;
-  height: 50px;
+  display: block;
+  white-space: nowrap;
+  width: 1000px;
+}
+
+tbody {
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 750px;
+}
+
+th {
+  border-bottom: 1px solid #263238;
+  align-content: space-between;
+  text-align: left;
+  font-weight: 700;
+  padding: 16px 16px 16px 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+td {
+  padding: 16px 64px 16px 0px;
+  align-content: space-between;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.small {
+  padding-right: 48px;
+}
+
+.medium {
+  padding-right: 48px
+}
+
+.large {
+  padding-right: 160px;
+
+}
+
+.row {
+  border-bottom: 1px solid lightgray;
+}
+
+.row:hover {
+  background-color: #FF725E;
+  color: white;
+  cursor: pointer;
+}
+
+.row:hover .icon {
+  color: white;
+}
+
+.row .icon:hover {
+  color: #263238;
+}
+
+.description {
+  width: 650px;
+  padding: 16px;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  font-style: italic;
+}
+
+.category-tag{
+  padding-bottom: 16px;
+  font-weight: 700;
+}
+
+.tool-tag{
+  display: inline-block;
+  font-weight: 700;
+    padding-bottom: 16px;
 }
 
 a {
@@ -75,15 +144,30 @@ li {
 }
 
 .icon {
+  margin: 0px 12px;
+  font-size: 20px;
+}
+
+.icon:hover {
+  color: #263238;
+}
+
+.iconPlus:hover {
+  color: #263238;
+}
+
+.iconLink {
   margin-right: 16px;
+  font-size: 20px;
 }
 
 /* Einstellungen für Formular */
 fieldset {
   border: 1px solid #263238;
-  border-radius: 16px;
-  width: 336px;
+  border-radius: 24px;
+  width: 10px;
   height: 48px;
+  margin-bottom: 16px;
 }
 
 legend {
@@ -91,9 +175,14 @@ legend {
   text-align: left;
 }
 
+select {
+  font-weight: 700;
+  margin-left: 24px;
+  appearance: none;
+}
+
 input {
   border: white;
-  width: 336px;
   font-weight: 700;
 }
 
@@ -101,10 +190,25 @@ input:focus {
   outline: none;
 }
 
+.fieldset{
+  width: 336px;
+}
+
 .forgotPassword {
   margin: 32px 0px 32px 0px;
   text-align: right;
   width: 360px;
+}
+
+.createTasks {
+  background-color: white;
+  border: 1px solid #263238;
+  border-radius: 24px;
+  padding: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Einstellungen für Schaltflächen */
@@ -129,9 +233,9 @@ button:active {
 
 select {
   background-color: white;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   text-align: center;
-  border-radius: 16px;
+  border-radius: 24px;
   height: 50px;
   width: 250px;
   cursor: pointer;
@@ -151,9 +255,9 @@ select {
   background: white;
   border: 1px solid black;
   color: black;
-  border-radius: 16px;
+  border-radius: 24px;
   height: 50px;
-  padding: 0px 46px;
+  padding: 0px 48px;
   width: 370px;
   cursor: pointer;
   text-decoration: none;
@@ -165,7 +269,7 @@ select {
   background: #FF725E;
   border: 1px solid #FF725E;
   color: white;
-  border-radius: 16px;
+  border-radius: 24px;
   height: 50px;
   padding: 0px 54px;
   width: 370px;
@@ -173,7 +277,43 @@ select {
   text-decoration: none;
 }
 
+.saveButton {
+  position: absolute;
+  right: 280px;
+  top: 200px;
+  margin-bottom: 16px;
+  align-items: center;
+  background: #FF725E;
+  border: 1px solid #FF725E;
+  color: white;
+  border-radius: 24px;
+  height: 50px;
+  padding: 0px 54px;
+  width: 200px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 /* Einstellungen für die Links */
+
+.createLink {
+  position: absolute;
+  right: 380px;
+  top: 200px;
+  color: #FF725E;
+}
+
+.uploadLink {
+  position: absolute;
+  right: 524px;
+  top: 210px;
+}
+
+.settingLink {
+  position: absolute;
+  right: 650px;
+  top: 94px;
+}
 
 .messageLink {
   position: absolute;

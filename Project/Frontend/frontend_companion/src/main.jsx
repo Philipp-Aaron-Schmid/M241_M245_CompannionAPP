@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Login from "./pages/login";
 /* import Private from "./pages/private"; */
 import Admin from "./pages/admin";
+import Tasks from "./component/tasks";
+import CreateTasks from "./component/createTasks";
+import UpdateTasks from "./component/updateTasks";
 
 const router = createBrowserRouter([ 
   {
@@ -20,6 +23,18 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />
+  },
+  {
+    path: "/tasks",
+    element: <Tasks />
+  },
+  {
+    path: "/createTasks",
+    element: <CreateTasks />
+  },
+  {
+    path: "/updateTasks/:id",
+    element: <UpdateTasks />
   }
 ]);
 
