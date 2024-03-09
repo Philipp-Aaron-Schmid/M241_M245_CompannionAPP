@@ -10,6 +10,9 @@ import Admin from "./pages/admin";
 import Tasks from "./component/tasks";
 import CreateTasks from "./component/createTasks";
 import UpdateTasks from "./component/updateTasks";
+import Users from "./component/users";
+import CreateUsers from "./component/createUsers";
+import UpdateUsers from "./component/updateUsers";
 
 const router = createBrowserRouter([ 
   {
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
   {
     path: "/updateTasks/:id",
     element: <UpdateTasks />
+  },
+  {
+    path: "/users",
+    element: <Users />
+  },
+  {
+    path: "createUsers",
+    element: <CreateUsers />
+  },
+  {
+    path: "updateUsers/:id",
+    element: <UpdateUsers />
   }
 ]);
 

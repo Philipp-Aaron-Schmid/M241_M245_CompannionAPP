@@ -10,14 +10,16 @@ import { faQuestionCircle, faBell, faGear } from '@fortawesome/free-solid-svg-ic
 
 const Private = () => {
 
+    //Navigation
     const navigate = useNavigate();
-
     const handleLogoutClick = () => {
         navigate("/");
     };
-
     const handleTaskClick = () => {
         navigate("/tasks");
+    };
+    const handleUserClick = () => {
+        navigate("/users");
     };
 
     return (
@@ -32,7 +34,7 @@ const Private = () => {
                     <button className="button">Dashboard</button>
                 </div>
                 <div>
-                    <button className="button">Benutzerkonto & Berechtigung</button>
+                    <button className="button" onClick={handleUserClick}>Benutzerkonto & Berechtigung</button>
                 </div>
                 <div>
                     <button className="button" onClick={handleTaskClick}>Modulen & Aufgaben</button>

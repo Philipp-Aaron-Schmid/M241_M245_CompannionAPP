@@ -11,7 +11,7 @@ import { faQuestionCircle, faBell, faCirclePlus, faGear } from '@fortawesome/fre
 import { BsEye, BsPencil, BsTrash, BsCopy, BsChevronExpand, BsEyeSlash, BsSearch } from 'react-icons/bs';
 
 // Importiere Navigation (Seiten, Komponenten)
-import { CreateTask } from "./createTasks";
+import { CreateUsers } from "./createUsers";
 
 export const TableTask = (deleteRow) => {
 
@@ -19,23 +19,21 @@ export const TableTask = (deleteRow) => {
     const navigate = useNavigate();
     const handleLogoutClick = () => { navigate("/"); };
     const handleBackClick = () => { navigate("/admin"); };
-    const handleUserClick = () => { navigate("/users"); };
+    const handleTaskClick = () => { navigate("/tasks"); };
 
     //Tabelle & Popup
     const [records, setRecords] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
-    const [isActive, setIsActive] = useState(false);
-
-
+  
     useEffect(() => {
-        axios.get('http://localhost:3030/tasks')
+        axios.get('http://localhost:3030/users')
             .then(res => {
                 setRecords(res.data)
             })
     }, [])
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3030/tasks/${id}`)
+        axios.delete(`http://localhost:3030/users/${id}`)
             .then(res => {
                 setRecords(records.filter(record => record.id !== id));
             })
@@ -46,24 +44,11 @@ export const TableTask = (deleteRow) => {
         const recordToDuplicate = records.find(record => record.id === id);
         if (recordToDuplicate) {
             const duplicatedRecord = { ...recordToDuplicate, id: uuidv4() };
-            axios.post('http://localhost:3030/tasks', duplicatedRecord)
+            axios.post('http://localhost:3030/users', duplicatedRecord)
                 .then(res => {
                     setRecords([...records, res.data]);
                 })
                 .catch(error => console.error(error));
-        }
-    };
-
-    const handleClick = () => {
-        setIsActive(!isActive);
-    };
-
-    const [openAccordion, setOpenAccordion] = useState(null);
-    const toggleAccordion = (index) => {
-        if (openAccordion === index) {
-            setOpenAccordion(null);
-        } else {
-            setOpenAccordion(index);
         }
     };
 
@@ -80,10 +65,10 @@ export const TableTask = (deleteRow) => {
                     <button className="button">Dashboard</button>
                 </div>
                 <div>
-                    <button className="button" onClick={handleUserClick}>Benutzerkonto & Berechtigung</button>
+                    <button className="button" onClick={handleBackClick}>Zurückgehen</button>
                 </div>
                 <div>
-                    <button className="button" onClick={handleBackClick}>Zurückgehen</button>
+                    <button className="button" onClick={handleTaskClick}>Modulen & Aufgaben</button>
                 </div>
                 <div>
                     <button className="button" onClick={handleLogoutClick}>Logout</button>
@@ -105,68 +90,47 @@ export const TableTask = (deleteRow) => {
             </div>
 
             <table className="table" deleteRow={handleDelete}>
-                <h1>Modulen & Aufgaben</h1>
+                <h1>Benutzerkonto</h1>
                 <thead>
                     <tr>
                         <div>
+
                             <input type="text" className="search" />
                             <BsSearch className="iconSearch" />
                         </div>
                         <div>
-                            <Link to="/createTasks" className="createLink">
+                            <Link to="/createUsers" className="createLink">
                                 <FontAwesomeIcon className="iconPlus" icon={faCirclePlus} size="3x" onClick={() => setModalOpen} />
                             </Link>
-                            {modalOpen && <CreateTask closeModal={() => {
+                            {modalOpen && <CreateUsers closeModal={() => {
                                 setModalOpen(false);
                             }}
                                 onSubmit={this.handleSubmit} />}
                         </div>
                     </tr>
                     <tr>
-                        <th className="small">Details</th>
-                        <th className="small">Task-ID</th>
-                        <th className="large">Task-Name</th>
-                        <th className="small">Modul</th>
-                        <th className="medium">Kollaboration</th>
-                        <th className="small">Status</th>
+                        <th className="small">User-ID</th>
+                        <th className="large">Vorname</th>
+                        <th className="large">Nachname</th>
+                        <th className="medium">Klasse</th>
+                        <th className="large">E-Mail</th>
                         <th className="small">Aktion</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {records.map((record, index) => (
-                        <React.Fragment key={index}>
-                            <tr className="row">
-                                <td>
-                                    <BsChevronExpand className="icon" onClick={() => toggleAccordion(index)} />
-                                </td>
-                                <td>{record.taskID}</td>
-                                <td>{record.taskName}</td>
-                                <td>{record.module}</td>
-                                <td>{record.collaboration}</td>
-                                <td onClick={handleClick}>
-                                    {isActive ? <BsEye /> : <BsEyeSlash />}
-                                </td>
-                                <td>
-                                    <Link to={`/updateTasks/${record.id}`}><BsPencil className="icon" /></Link>
-                                    <BsTrash className="icon" onClick={() => handleDelete(record.id)} />
-                                    <BsCopy className="icon" onClick={() => handleDuplicate(record.id)} />
-                                </td>
-                            </tr>
-                            {openAccordion === index && (
-                                <tr className="row">
-                                    <td>
-                                        <div className="description">{record.taskDescription}</div>
-                                    </td>
-                                    <td>
-                                        <div className="category-tag">{record.category}</div>
-                                        <div className="tool-tag">{record.tools}</div>
-                                    </td>
-                                </tr>
-                            )}
-                        </React.Fragment>
+                        <tr className="row">
+                            <td>{record.userID}</td>
+                            <td>{record.firstname}</td>
+                            <td>{record.lastname}</td>
+                            <td>{record.classID}</td>
+                            <td>{record.email}</td>
+                            <td>
+                                <Link to={`/updateUsers/${record.id}`}><BsPencil className="icon" /></Link>
+                                <BsTrash className="icon" onClick={() => handleDelete(record.id)} />
+                                <BsCopy className="icon" onClick={() => handleDuplicate(record.id)} />
+                            </td>
+                        </tr>
                     ))}
                 </tbody>
             </table>

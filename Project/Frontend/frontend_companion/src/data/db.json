@@ -10,5 +10,15 @@
       "category": "Software-Entwicklung",
       "tools": "GitHub"
     }
+  ],
+  "users": [
+    {
+      "id": "a3b4",
+      "userID": "U-2401",
+      "firstname": "Administrator",
+      "lastname": "WISSconnect",
+      "classID": "UIFZ",
+      "email": "admin@wiss.ch"
+    }
   ]
 }
