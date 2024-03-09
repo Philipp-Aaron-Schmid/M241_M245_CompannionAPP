@@ -1,0 +1,355 @@
+/* importiert die Schirften von Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+/* Allgemeine Einstellung */
+* {
+  font-family: 'Quicksand';
+  font-size: 18px;
+  font-weight: 400;
+}
+
+h1 {
+  color: #263238;
+  font-family: 'Quicksand';
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.table {
+  margin-top: -650px;
+  margin-left: 650px;
+  border-collapse: collapse;
+  display: block;
+  white-space: nowrap;
+  width: 1000px;
+  table-layout: fixed;
+}
+
+tbody {
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 705px;
+
+}
+
+th {
+  border-bottom: 1px solid #263238;
+  align-content: space-between;
+  text-align: left;
+  font-weight: 700;
+  padding: 56px 16px 16px 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+td {
+  padding: 16px 64px 16px 0px;
+  align-content: space-between;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.small {
+  padding-right: 48px;
+}
+
+.medium {
+  padding-right: 48px
+}
+
+.large {
+  padding-right: 160px;
+
+}
+
+.row {
+  border-bottom: 1px solid lightgray;
+}
+
+.row:hover {
+  background-color: #FF725E;
+  color: white;
+  cursor: pointer;
+}
+
+.row:hover .icon {
+  color: white;
+}
+
+.row .icon:hover {
+  color: #263238;
+}
+
+.description {
+  width: 650px;
+  padding: 16px;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  font-style: italic;
+}
+
+.category-tag{
+  padding-bottom: 16px;
+  font-weight: 700;
+}
+
+.tool-tag{
+  display: inline-block;
+  font-weight: 700;
+    padding-bottom: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #263238;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+a:hover {
+  color: #FF725E;
+}
+
+ul {
+  margin-top: 160px;
+  margin-left: 140px;
+  list-style-type: none;
+  display: flex;
+}
+
+li {
+  padding-right: 32px;
+}
+
+.link {
+  font-weight: 400;
+}
+
+/* Einstellungen für Logo */
+.logo {
+  margin-top: 64px;
+  margin-left: 176px;
+  height: 50px;
+  width: 225px;
+}
+
+/* Einstellungen für Bilder und Icons*/
+
+.imageLogin {
+  position: absolute;
+  right: 176px;
+  top: 192px;
+  width: 928px;
+  height: 864px;
+}
+
+.icon {
+  margin: 0px 12px;
+  font-size: 20px;
+}
+
+.iconSearch {
+  margin: 0px 12px;
+  font-size: 20px;
+  top: 215px;
+  right: 500px;
+  position: absolute;
+}
+
+.icon:hover {
+  color: #263238;
+}
+
+.iconPlus:hover {
+  color: #263238;
+}
+
+.iconLink {
+  margin-right: 16px;
+  font-size: 20px;
+}
+
+.search {
+  position: absolute;
+  right: 480px;
+  top: 200px;
+  margin-bottom: 16px;
+  align-items: center;
+  background: white;
+  border: 1px solid black;
+  color: black;
+  border-radius: 24px;
+  height: 50px;
+  padding: 0px 48px;
+  width: 220px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Einstellungen für Formular */
+fieldset {
+  border: 1px solid #263238;
+  border-radius: 24px;
+  width: 10px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+
+legend {
+  padding: 0px 16px 0px 16px;
+  text-align: left;
+}
+
+select {
+  font-weight: 700;
+  margin-left: 24px;
+  appearance: none;
+}
+
+input {
+  border: white;
+  font-weight: 700;
+}
+
+input:focus {
+  outline: none;
+}
+
+.fieldset{
+  width: 336px;
+}
+
+.forgotPassword {
+  margin: 32px 0px 32px 0px;
+  text-align: right;
+  width: 360px;
+}
+
+.createTasks {
+  background-color: white;
+  border: 1px solid #263238;
+  border-radius: 24px;
+  padding: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Einstellungen für Schaltflächen */
+button {
+  letter-spacing: 0.1px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.button:hover {
+  background: #263238;
+  color: white;
+  border: 2px solid #263238;
+}
+
+button:active {
+  background: #263238;
+  color: white;
+  border: 2px solid #263238;
+}
+
+select {
+  background-color: white;
+  margin-bottom: 16px;
+  text-align: center;
+  border-radius: 24px;
+  height: 50px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.navButton {
+  margin-top: 440px;
+  margin-left: 176px;
+  align-items: center;
+  justify-content: center;
+  grid-area: navButton;
+}
+
+.button {
+  margin-bottom: 16px;
+  align-items: center;
+  background: white;
+  border: 1px solid black;
+  color: black;
+  border-radius: 24px;
+  height: 50px;
+  padding: 0px 48px;
+  width: 370px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.submitButton {
+  margin-bottom: 16px;
+  align-items: center;
+  background: #FF725E;
+  border: 1px solid #FF725E;
+  color: white;
+  border-radius: 24px;
+  height: 50px;
+  padding: 0px 54px;
+  width: 370px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.saveButton {
+  position: absolute;
+  right: 280px;
+  top: 200px;
+  margin-bottom: 16px;
+  align-items: center;
+  background: #FF725E;
+  border: 1px solid #FF725E;
+  color: white;
+  border-radius: 24px;
+  height: 50px;
+  padding: 0px 54px;
+  width: 200px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Einstellungen für die Links */
+
+.createLink {
+  position: absolute;
+  right: 380px;
+  top: 200px;
+  color: #FF725E;
+}
+
+.uploadLink {
+  position: absolute;
+  right: 524px;
+  top: 210px;
+}
+
+.settingLink {
+  position: absolute;
+  right: 650px;
+  top: 94px;
+}
+
+.messageLink {
+  position: absolute;
+  right: 400px;
+  top: 94px;
+}
+
+.helpLink {
+  position: absolute;
+  right: 176px;
+  top: 94px;
+}

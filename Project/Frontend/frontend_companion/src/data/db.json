@@ -1,0 +1,34 @@
+{
+  "tasks": [
+    {
+      "id": "ebf4",
+      "taskID": "T-2402",
+      "taskName": "GitHub-Konto erstellen",
+      "taskDescription": "Gehe auf GitHub und eröffne dein Konto.",
+      "module": "M245",
+      "collaboration": "Einzelarbeit",
+      "category": "Software-Entwicklung",
+      "tools": "GitHub"
+    }
+  ],
+  "users": [
+    {
+      "id": "a3b4",
+      "userID": "U-2401",
+      "firstname": "Admin",
+      "lastname": "WISSconnect",
+      "classID": "UIFZ2205",
+      "email": "admin@wiss.ch",
+      "roles": "Admin"
+    },
+    {
+      "id": "b6ea",
+      "userID": "jkjnjn",
+      "firstname": "njnj",
+      "lastname": "njn",
+      "email": "jn",
+      "classID": "jkk",
+      "roles": "Student"
+    }
+  ]
+}
