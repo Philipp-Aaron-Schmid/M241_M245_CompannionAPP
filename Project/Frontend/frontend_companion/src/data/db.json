@@ -15,10 +15,20 @@
     {
       "id": "a3b4",
       "userID": "U-2401",
-      "firstname": "Administrator",
+      "firstname": "Admin",
       "lastname": "WISSconnect",
-      "classID": "UIFZ",
-      "email": "admin@wiss.ch"
+      "classID": "UIFZ2205",
+      "email": "admin@wiss.ch",
+      "roles": "Admin"
+    },
+    {
+      "id": "b6ea",
+      "userID": "jkjnjn",
+      "firstname": "njnj",
+      "lastname": "njn",
+      "email": "jn",
+      "classID": "jkk",
+      "roles": "Student"
     }
   ]
 }

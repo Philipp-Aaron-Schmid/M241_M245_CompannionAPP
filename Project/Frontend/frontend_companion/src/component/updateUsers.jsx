@@ -14,13 +14,14 @@ export const UpdateTasks = () => {
     const navigate = useNavigate();
     const handleLogoutClick = () => { navigate("/"); };
     const handleBackClick = () => { navigate(-1); };
+    const handleTaskClick = () => { navigate("/tasks"); };
 
     //Formular
     const { id } = useParams();
     const [record, setRecord] = useState({});
 
-    useEffect(() => { axios.get('http://localhost:3030/tasks/' + id).then(res => setRecord(res.data)).catch(error => console.log(error)); }, [id])
-    function handleSubmit(e) { e.preventDefault(); axios.put('http://localhost:3030/tasks/' + id, record).then(res => { navigate("/tasks"); }); }
+    useEffect(() => { axios.get('http://localhost:3030/users/' + id).then(res => setRecord(res.data)).catch(error => console.log(error)); }, [id])
+    function handleSubmit(e) { e.preventDefault(); axios.put('http://localhost:3030/users/' + id, record).then(res => { navigate("/users"); }); }
 
     return (
         <div>
@@ -34,10 +35,10 @@ export const UpdateTasks = () => {
                     <button className="button">Dashboard</button>
                 </div>
                 <div>
-                    <button className="button">Benutzerkonto & Berechtigung</button>
+                    <button className="button" onClick={handleBackClick}>Zurückgehen</button>
                 </div>
                 <div>
-                    <button className="button" onClick={handleBackClick}>Zurückgehen</button>
+                    <button className="button" onClick={handleTaskClick}>Modulen & Aufgaben</button>
                 </div>
                 <div>
                     <button className="button" onClick={handleLogoutClick}>Logout</button>
@@ -59,50 +60,34 @@ export const UpdateTasks = () => {
             </div>
 
             <div className="table">
-                <h1>Aufgabe aktualisieren</h1>
+                <h1>Benutzer aktualisieren</h1>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
                         <legend>ID</legend>
-                        <input name="taskID" type="text" maxLength="6" value={record.taskID} onChange={e => setRecord({ ...record, taskID: e.target.value })} />
+                        <input name="userID" type="text" maxLength="6" value={record.userID} onChange={e => setRecord({ ...record, userID: e.target.value })} />
                     </fieldset>
                     <fieldset>
-                        <legend>Task-Name</legend>
-                        <input name="taskName" type="text" maxLength="24" value={record.taskName} onChange={e => setRecord({ ...record, taskName: e.target.value })} />
+                        <legend>Vorname</legend>
+                        <input name="fristname" type="text" maxLength="24" value={record.firstname} onChange={e => setRecord({ ...record, firstname: e.target.value })} />
                     </fieldset>
                     <fieldset>
-                        <legend>Task-Beschreibung</legend>
-                        <input name="taskDescription=" type="text" value={record.taskDescription} onChange={e => setRecord({ ...record, taskDescription: e.target.value })} />
+                        <legend>Nachname</legend>
+                        <input name="lastname" type="text" maxLength="24" value={record.lastname} onChange={e => setRecord({ ...record, lastname: e.target.value })} />
                     </fieldset>
                     <fieldset>
-                        <legend>Modul</legend>
-                        <input name="module" type="text" maxLength="4" value={record.module} onChange={e => setRecord({ ...record, module: e.target.value })} />
+                        <legend>Klasse</legend>
+                        <input name="classID" type="text" maxLength="15" value={record.classID} onChange={e => setRecord({ ...record, classID: e.target.value })} />
+                    </fieldset>
+                    <fieldset>
+                        <legend>Email</legend>
+                        <input name="email" type="text" maxLength="24" value={record.email} onChange={e => setRecord({ ...record, email: e.target.value })} />
                     </fieldset>
                     <div>
-                        <label>Kollaboration
-                            <select name="collaboration" value={record.collaboration} onChange={e => setRecord({ ...record, collaboration: e.target.value })}>
+                        <label>Rolle
+                            <select name="roles" value={record.roles} onChange={e => setRecord({ ...record, roles: e.target.value })}>
                                 <option value="blank">Bitte auswählen</option>
-                                <option value="Einzelarbeit">Einzelarbeit</option>
-                                <option value="Gruppenarbeit">Gruppenarbeit</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>Kategorie
-                            <select name="category" value={record.category} onChange={e => setRecord({ ...record, category: e.target.value })}>
-                                <option value="blank">Bitte auswählen</option>
-                                <option value="Software-Entwicklung">Software-Entwicklung</option>
-                                <option value="Webdesign">Webdesign</option>
-                                <option value="Datenbank">Datenbank</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>Tools
-                            <select name="tools" value={record.tools} onChange={e => setRecord({ ...record, tools: e.target.value })}>
-                                <option value="blank">Bitte auswählen</option>
-                                <option value="GitHub">GitHub</option>
-                                <option value="React">React</option>
-                                <option value="Docker">Docker</option>
+                                <option value="Student">Student</option>
+                                <option value="Admin">Admin</option>
                             </select>
                         </label>
                     </div>

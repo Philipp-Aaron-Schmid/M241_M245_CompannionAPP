@@ -110,10 +110,11 @@ export const TableTask = (deleteRow) => {
                     </tr>
                     <tr>
                         <th className="small">User-ID</th>
-                        <th className="large">Vorname</th>
-                        <th className="large">Nachname</th>
-                        <th className="medium">Klasse</th>
+                        <th className="medium">Vorname</th>
+                        <th className="medium">Nachname</th>
                         <th className="large">E-Mail</th>
+                        <th className="large">Klasse</th>
+                        <th className="medium">Rolle</th>
                         <th className="small">Aktion</th>
                     </tr>
                 </thead>
@@ -123,8 +124,9 @@ export const TableTask = (deleteRow) => {
                             <td>{record.userID}</td>
                             <td>{record.firstname}</td>
                             <td>{record.lastname}</td>
-                            <td>{record.classID}</td>
                             <td>{record.email}</td>
+                            <td>{record.classID}</td>
+                            <td>{record.roles}</td>
                             <td>
                                 <Link to={`/updateUsers/${record.id}`}><BsPencil className="icon" /></Link>
                                 <BsTrash className="icon" onClick={() => handleDelete(record.id)} />

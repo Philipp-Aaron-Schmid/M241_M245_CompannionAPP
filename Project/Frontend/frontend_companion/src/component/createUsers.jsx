@@ -18,16 +18,16 @@ export const CreateUsers = ({ closeModal, onSubmit }) => {
     const handleTaskClick = () => { navigate("/tasks"); };
 
     //Formular
-    const [formState, setFormState] = useState({ userID: "", firstname: "", lastname: "", classID: "", email: "" }); const handleChange = (e) => { setFormState({ ...formState, [e.target.name]: e.target.value }); };
+    const [formState, setFormState] = useState({ userID: "", firstname: "", lastname: "", email: "", classID: "", roles: "" }); const handleChange = (e) => { setFormState({ ...formState, [e.target.name]: e.target.value }); };
     function handleSubmit(e) {
         e.preventDefault();
-        let { userID, firstname, lastname, classID, email } = formState;
+        let { userID, firstname, lastname, email, classID, roles } = formState;
         if (userID) {
             while (userID.length < 6) {
                 userID = userID + '';
             }
         }
-        axios.post('http://localhost:3030/users', { userID, firstname, lastname, classID, email })
+        axios.post('http://localhost:3030/users', { userID, firstname, lastname, email, classID, roles })
             .then(res => {
                 navigate("/users");
             });
@@ -85,13 +85,22 @@ export const CreateUsers = ({ closeModal, onSubmit }) => {
                         <input name="lastname" type="text" maxLength="24" value={formState.lastname} onChange={handleChange} />
                     </fieldset>
                     <fieldset>
-                        <legend>Klasse</legend>
-                        <input name="classID" type="text" maxLength="4" value={formState.classID} onChange={handleChange} />
-                    </fieldset>
-                    <fieldset>
                         <legend>E-Mail</legend>
                         <input name="email" type="text" maxLength="24" value={formState.email} onChange={handleChange} />
                     </fieldset>
+                    <fieldset>
+                        <legend>Klasse</legend>
+                        <input name="classID" type="text" maxLength="15" value={formState.classID} onChange={handleChange} />
+                    </fieldset>
+                    <div>
+                        <label>Rolle
+                            <select name="roles" value={formState.roles} onChange={handleChange}>
+                                <option value="blank">Bitte auswählen</option>
+                                <option value="Student">Student</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </label>
+                    </div>
                     <div>
                         <button className="saveButton" type="submit" onClick={handleSubmit}>Speichern</button>
                     </div>
