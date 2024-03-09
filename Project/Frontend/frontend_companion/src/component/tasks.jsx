@@ -8,7 +8,7 @@ import Logo from '../assets/img/logo.png';
 import '../css/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle, faBell, faCirclePlus, faGear } from '@fortawesome/free-solid-svg-icons';
-import { BsEye, BsPencil, BsTrash, BsCopy, BsChevronExpand, BsEyeSlash } from 'react-icons/bs';
+import { BsEye, BsPencil, BsTrash, BsCopy, BsChevronExpand, BsEyeSlash, BsSearch } from 'react-icons/bs';
 
 // Importiere Navigation (Seiten, Komponenten)
 import { CreateTask } from "./createTasks";
@@ -55,7 +55,7 @@ export const TableTask = (deleteRow) => {
 
     const handleClick = () => {
         setIsActive(!isActive);
-      };
+    };
 
     const [openAccordion, setOpenAccordion] = useState(null);
     const toggleAccordion = (index) => {
@@ -107,6 +107,11 @@ export const TableTask = (deleteRow) => {
                 <h1>Modulen & Aufgaben</h1>
                 <thead>
                     <tr>
+                        <div>
+                            
+                            <input type="text" className="search"/>
+                            <BsSearch className="iconSearch" />
+                        </div>
                         <div>
                             <Link to="/createTasks" className="createLink">
                                 <FontAwesomeIcon className="iconPlus" icon={faCirclePlus} size="3x" onClick={() => setModalOpen} />
